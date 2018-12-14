@@ -1,0 +1,34 @@
+body {
+  background: #000;
+}
+#editable, #hover {
+  background: #000;
+  width: 100%;
+  height: 100%;
+  font-family: monospace;
+  color: #000;
+  font-size: 16px;
+}
+#editable {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  /*visibility: hidden;*/
+}
+#hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
+#hover span {
+  color: #000;
+  transition: all 1s;
+}
+
+#hover .show {
+    color: #0f0;
+    transition: all 0.5s;
+}
