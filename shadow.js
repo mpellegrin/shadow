@@ -19,10 +19,16 @@ app.tagString = function(a, b) {
   return newString;
 }
 
+app.storeContent = function() {
+  localStorage.setItem('editable', jQuery('#hover').text());
+};
+
+
 app.resetBuffer = function() {
     console.log('reset timeout');
     app.bufferedOldText = '';
     app.resetBufferTimeout = false;
+    app.storeContent();
 };
 
 app.init = function() {
@@ -35,6 +41,10 @@ app.init = function() {
   app.resetBufferTimeout = false;
   app.bufferedOldText = '';
 
+  if(!localStorage.getItem('editable')) {
+    localStorage.setItem('editable', jQuery('#editable').text());
+  }
+
   jQuery(document).resize(function () {
     jQuery('#editable').height(jQuery(document).height());
     jQuery('#editable').width(jQuery(document).width());
@@ -46,6 +56,8 @@ app.init = function() {
   jQuery('#editable').keyup(app.keyup);
 
   app.tick();
+
+  jQuery('#hover').click();
 };
 
 app.tick = function() {
